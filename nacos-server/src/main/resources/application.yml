@@ -1,0 +1,52 @@
+server:
+  port: 8077
+spring:
+  application:
+    name: discover-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.105:8848
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/cloud_server?useUnicode=true&useSSL=false&serverTimezone=UTC
+    # 推荐utf8mb4编码以便支持表情字符，sys_log记录系统数据变动需要支持utf8mb4
+    connectionInitSqls: SET NAMES utf8mb4;
+    username: root
+    password: root
+    initialSize: 1
+    minIdle: 3
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,slf4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    # 合并多个DruidDataSource的监控数据
+    #useGlobalDataSourceStat: true
+#eureka:
+  #server:
+  #client:
+    # 此应用为注册中心，false：不向注册中心注册自己。
+    #fetch-registry: true
+    ## 注册中心职责是维护服务实例，false：不检索服务。
+   # register-with-eureka: true
+    #serviceUrl:
+      #defauldZone: http://localhost:8761/eureka/
+
+#logging:
+  #evel:
+    #com.netflix: warn

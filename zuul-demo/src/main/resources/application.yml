@@ -1,0 +1,29 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: nacos-zuul
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.0.105:8848
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/cloud_client?useUnicode=true&useSSL=false&serverTimezone=UTC
+    # 推荐utf8mb4编码以便支持表情字符，sys_log记录系统数据变动需要支持utf8mb4
+    connectionInitSqls: SET NAMES utf8mb4;
+    username: root
+    password: root
+
+
+zuul:
+  routes:
+      nacos-consumer:
+        service-id:  nacos02
+        strip-prefix: false  #当为true 的时候 跟path 会去掉 Cuser 前缀
+        path: /Cuser/**
+      nacos-provider:
+          service-id: discover-service
+          strip-prefix: false
+          path: /user/**
