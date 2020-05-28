@@ -1,0 +1,4 @@
+# Project exclude paths
+/nacos-client/target/
+/nacos-server/target/
+/zuul-demo/target/

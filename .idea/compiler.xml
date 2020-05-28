@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="eureka-client" />
+        <module name="eureka-server" />
+        <module name="zuul-demo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="demo" target="1.8" />
+      <module name="nacos-zuul" target="1.8" />
+      <module name="zulldemo" target="1.8" />
+      <module name="zuuldemo" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="demo" options="-parameters" />
+      <module name="eureka-client" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="nacos-zuul" options="-parameters" />
+      <module name="springclouddemo" options="-parameters" />
+      <module name="zulldemo" options="-parameters" />
+      <module name="zuul-demo" options="-parameters" />
+      <module name="zuuldemo" options="-parameters" />
+    </option>
+  </component>
+</project>
